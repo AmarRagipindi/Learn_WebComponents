@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <!--Template does nothing until cloned-->
+        <!--Hidden from selectors-->
+        <!--Flexible placement-->
+
+
+        <template id="secondtemplate">
+            <h1> I am from second template</h1>
+        </template>     
+
+        <template id="firsttemplate">
+            <div>
+                <h1>I am from first template</h1>
+            </div>
+        </template>
+
+        <template id="thirdtemplate">
+           <p>This is <span class="placeholder"></span></p>
+        </template>
+
+        <h1>Lets learn web components</h1>
+        <button onclick="IncrementCounter()">Click me!</button>
+        <script>
+            var clickCounter=0;
+            // Using Query selector. This gets the first template. not correct when multiple templates are there
+            var template = document.querySelector('template');
+            var clone = document.importNode(template.content,true );
+            document.body.appendChild(clone);
+
+            //using get element by id
+            var template2 = document.getElementById('secondtemplate');
+            var clone2 = document.importNode(template2.content,true);
+            document.body.appendChild(clone2);
+
+            //Inject data into the cloned copy
+            var template3= document.getElementById('thirdtemplate');
+            var clone3 = document.importNode(template3.content, true);
+
+            document.body.appendChild(clone3);
+
+            function IncrementCounter(){
+                clickCounter++;
+                console.log(clickCounter);
+
+            }
+            
+        </script>
+    </body>
+</html>
